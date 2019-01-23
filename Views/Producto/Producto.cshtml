@@ -1,0 +1,204 @@
+﻿@model SistemaDeVenta.Models.Producto
+
+@{
+    ViewData["Title"] = "Producto";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="~/css/simple-sidebar.css" rel="stylesheet">
+    <link href="~/css/Producto.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <div id="sidebar-wrapper" class="bg-dark" style="font-size:18px;">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand" style="margin-top:50px;">
+                </li>
+                <li>
+
+                    <a asp-controller="Producto" asp-action="Producto">  <i class=" fa fa-folder fa-1x"></i>  Productos</a>
+                </li>
+                <li>
+
+                </li>
+                <li>
+                    <br />
+                    <a asp-controller="Empleado" asp-action="Empleado">  <i class=" fa fa-user fa-1x"></i>  Empleados</a>
+                </li>
+                <li>
+                    <br />
+                    <a class="dropdown" href="#">
+                        <a class="dropdown-toggle text-white-50" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class=" fa fa-money fa-1x"></i>
+                            Ventas
+                        </a>
+                        <div class="dropdown-menu bg-dark text-white-50" aria-labelledby="dropdownMenu2">
+                            <a asp-action="RegistrarVenta" asp-controller="Venta" class="dropdown-item">Registrar Nueva Venta</a>
+                           
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+        <button type="button" href="#menu-toggle" class="btn btn-dark btn-lg" style="position:fixed; z-index:1000; top:70px; right:30px; " id="menu-toggle"><i class="fa fa-reorder"></i></button>
+
+
+        <div id="page-content-wrapper">
+            <div class="container">
+
+                <!-- Formulario de Crear Productos-->
+                <div class="mt-4 p-2"></div>
+                <div class="col-md-12 text-center mt-4">
+                    <h4> Agregar Producto </h4>
+                </div>
+
+                <form asp-action="AgregarProducto" class=" border  mt-4 addProductos">
+                    <div class="row">
+                        <div class="col-md-"></div>
+                        <div class="col-md-2">
+                            <label>Nombre</label>
+                            <input type="text" class="form-control col-md-12" id="validationTooltip01" placeholder=" Nombre" name="Nombre">
+                            <div class="valid-tooltip">
+                                Bien!
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Descripcion</label>
+                            <input type="text" class="form-control" placeholder="Descripcion" name="Descripcion" required>
+                            <div class="valid-tooltip">
+                                Bien!
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Precio</label>
+                            <div class="row col-md-6">
+                                <div>
+                                    <span></span>
+                                </div>
+                                <input type="text" class="form-control col-md-8" name="Precio" placeholder="Precio">
+                                <div class="invalid-tooltip">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4" style="margin-top:30px;">
+                                    <button class="btn btn-outline-primary   animated wobble col-md-12" type="submit"> <i class="fa-fa-folder-plus"></i> Agregar</button>
+                                </div>
+                                <div class="col-md-4"></div>
+                            </div>
+                        </div>`
+                    </div>
+                </form>
+
+                <div style="margin-top:120px;">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">Nombre</th>
+                                <th class="text-center">Descripcion</th>
+                                <th class="text-center"> Precio</th>
+                                <th> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @if (ViewBag.ListaProducto != null)
+                            {
+                                foreach (var item in ViewBag.ListaProducto)
+                                {
+
+                                    if (item.Nombre != "" || item.Nombre != null)
+                                    {
+                                        <form asp-action="DeleteProducto">
+                                            <tr>
+                                                <td class="text-center">
+                                                    @item.id
+                                                </td>
+                                                <td class="text-center">
+                                                    @item.Nombre
+                                                </td>
+                                                <td class="text-center">
+                                                    @item.Descripcion
+                                                </td>
+                                                <td class="text-center">
+                                                    @item.Precio
+                                                    <input type="hidden" name="id" value="@item.id" />
+                                                </td>
+                                                <td></td>
+                                                <td>
+                                                    <button asp-action="EditarProducto" asp-route-id="@item.id" class="btn btn-primary animated fadeInRight"> <i class="fa fa-refresh"></i></button>
+                                                    <button asp-action="Detalle" asp-route-id="@item.id" class="btn btn-success animated fadeInRight"><i class="fa fa-file-text-o"></i></button>
+                                                    <button type="submit" class="btn btn-danger animated fadeInRight"> <i class="fa fa-trash"> </i></button>
+
+                                                </td>
+
+                                            </tr>
+                                        </form>
+
+                                    }
+
+                                }
+
+                            }
+                        </tbody>
+
+
+                    </table>
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+        <!-- /#wrapper -->
+        <!-- Bootstrap core JavaScript -->
+        <script src="~/vendor/jquery/jquery.min.js"></script>
+        <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Menu Toggle Script -->
+        <script>
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
+
+</body>
+
+</html>
+

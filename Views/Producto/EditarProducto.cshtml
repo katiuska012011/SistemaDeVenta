@@ -1,0 +1,60 @@
+﻿@model SistemaDeVenta.Models.Producto
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<link href="~/css/Producto.css" rel="stylesheet" />
+<!-- Formulario de Crear Productos-->
+
+<div class="container">
+    <div class="col-md-12 text-center " style="padding:20px; margin-top:50px;">
+        <h4> Editar Producto</h4>
+    </div>
+
+    <form asp-action="Edit" class=" border  mt-4 addProductos">
+        <div class="row">
+            <div class="col-md-"></div>
+            <div class="col-md-2">
+                <label>Nombre</label>
+                <input asp-for="Nombre" type="text" class="form-control col-md-12" id="validationTooltip01" placeholder=" Nombre" name="Nombre" required>
+                <div class="valid-tooltip">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label>Descripcion</label>
+                <input asp-for="Descripcion" type="text" class="form-control" placeholder="Descripcion" name="Descripcion" required>
+                <div class="valid-tooltip">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label>Precio</label>
+                <div class="row col-md-6">
+                    <div>
+                        <span></span>
+                    </div>
+                    <input asp-for="Precio" type="text" class="form-control col-md-8" name="Precio" placeholder="Precio" required>
+                    <div class="invalid-tooltip">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" >
+                        <button class="btn btn-outline-primary   animated wobble col-md-12" type="submit"> Update</button>
+                        
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="col-md-4"></div>
+                        <a class="btn btn-outline-success   animated wobble col-md-12"asp-action="Producto" >Regresar</a>
+                    </div>
+                </div>
+            </div>`
+        </div>
+    </form>
+</div>
+

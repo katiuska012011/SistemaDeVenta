@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Factura";
+}
+
+<style>
+
+h1{
+    font-size:80px;
+    color:cornflowerblue;
+    font-family:'Bell MT';
+}
+h6{
+    font-family:cursive;
+
+}
+.pie{
+    margin-top:80px;
+
+}
+</style>
+
+
+
+
+
+<div class="container">
+    <div class="text-center pie">
+        <h1> Mundy pizza </h1>
+        <h6> La mejor calidad en tu paladar! </h6>
+        <p>
+            Calle 10  Los prados.
+            Republica Dominicana
+        </p>
+
+    </div>
+    <div>
+        <h3> Factura</h3>
+    </div>
+
+    <hr />
+
+
+
+
+
+
+
+    <table class="table" style="margin-top:70px;">
+        <thead>
+            <tr>
+               
+                <th class="text-center">Producto</th> 
+                <th class="text-center">sMonto</th>
+
+            </tr>
+        </thead>
+
+
+        <tbody></tbody>
+
+
+    </table>
+
+
+
+    <hr />
+
+    <button onclick="imprimir()"  class="btn btn-lg btn-outline-primary animatd tada "> <i class="fa fa-print"></i> </button>
+
+
+    <script>
+        function imprimir() {
+            window.print();
+
+        }
+    </script>
+
+
+
+
+</div>
+

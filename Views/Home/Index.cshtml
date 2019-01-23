@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "_Layout";
+}
+<link href="~/css/Index.css" rel="stylesheet" />
+<link href="~/css/Librerias.css" rel="stylesheet" />
+
+
+
+<div class="row" style="margin-top:200px">
+    <div class="col-md-4"> </div>
+    <div class="col-md-4">
+        <form action="/" method="post">
+            <div class="col-md-12">
+                <div class="form-group col-md-12">
+                    <label for="inputEmail4" class="text-white"> Email</label>
+                    <input type="email" class="form-control " id="inputEmail4" placeholder="Email">
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="inputPassword4" class="text-white">Password</label>
+                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                </div>
+                <div class="form-group col-md-12" style="left:130px" id="login">
+                    <button type="submit" class="btn btn-outline-primary col-md-6 animated flash" asp-controller="Admin" asp-action="index">Login</button>
+                    
+                </div>
+                </form>
+             
+        
+                <div class="col-md-12 mb-3 " style="margin-top:50px">                  
+            </div>
+        </div>   
+   </div>
+   
+
+
+<a asp-controller="Home" asp-action="index">
+
+</a>
